@@ -1,0 +1,28 @@
+import random as rd
+import numpy as np
+import matplotlib.pyplot as plt
+from itertools import repeat
+
+
+############## Calculo de probabilidad exito Lanz Moneda #########
+n=100
+y=[int(rd.random()>0.5) for i in range(n)]
+n_=range(n)
+yy=np.cumsum(y)/n_
+print(yy[n-1]) # imprime utlimo valor estimado
+value_exp=list(repeat(0.5,n))
+plt.plot(n_,yy)
+plt.plot(value_exp)
+plt.show()
+
+############## Calculo integral exp(x) de 0 a 1 ###################
+n=250
+y=[np.exp(rd.random()) for i in range(n)]
+n_=range(1,n+1)
+yy=np.cumsum(y)/n_
+print(yy[n-1]) # imprime utlimo valor estimado
+value_exp=list(repeat(np.exp(1)-1,n))
+plt.plot(n_,yy)
+plt.plot(value_exp)
+plt.show()
+

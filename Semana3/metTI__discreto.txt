@@ -1,0 +1,26 @@
+import numpy as np
+import matplotlib.pyplot as plt
+k=200
+P=np.array([0.30,0.20,0.35,0.15]) 
+P_cumsum=np.cumsum(P) 
+xx=np.zeros(k)
+for i in np.arange(k):
+  u=np.random.rand(1) 
+  j=0
+  while u>P_cumsum[j]:
+    j=j+1
+  xx[i]=j+1
+  
+pesos_=np.zeros(4)
+for j in np.arange(len(pesos_)):
+  pesos_[j]=xx.tolist().count(j+1)
+
+plt.bar(np.arange(4)+1,pesos_/len(xx),width = 0.4)
+print(pesos_/len(xx))
+
+
+### UD(n=10)
+k=10
+n=6
+x=np.floor(n*np.random.rand(k))+1
+print(x)

@@ -1,0 +1,20 @@
+k=2000
+n=10
+P=np.array([0.11,0.12,0.09,0.08,0.12,0.10,0.09,0.09,0.10,0.10])
+Q=0.10*np.ones(n)
+c=np.max(P/Q)
+xx=np.zeros(k)
+for i in np.arange(k):
+  y=(np.floor(n*np.random.rand(1))).astype(int)+1
+  u=np.random.rand(1)
+  while u>P[y-1]/(c*Q[y-1]):
+    y=(np.floor(n*np.random.rand(1))).astype(int)+1
+    u=np.random.rand(1) 
+  xx[i]=y
+
+xxx=np.zeros(n)
+for j in np.arange(len(xxx)):
+  xxx[j]=xx.tolist().count(j+1)
+
+plt.bar(np.arange(n)+1,xxx/len(xx),width = 0.4)
+print(xxx/len(xx))
